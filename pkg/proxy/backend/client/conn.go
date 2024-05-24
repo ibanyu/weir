@@ -67,7 +67,7 @@ func Connect(addr string, user string, password string, dbName string, options .
 	c.proto = proto
 
 	//use default charset here
-	c.charset = constant.DefaultCharset
+	//c.charset = constant.DefaultCharset
 
 	// Apply configuration functions.
 	for i := range options {
@@ -75,6 +75,9 @@ func Connect(addr string, user string, password string, dbName string, options .
 	}
 
 	if err = c.handshake(); err != nil {
+		return nil, errors.Trace(err)
+	}
+	if err = c.SetCharset(constant.DefaultCharset); err != nil {
 		return nil, errors.Trace(err)
 	}
 
