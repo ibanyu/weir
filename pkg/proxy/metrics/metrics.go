@@ -57,6 +57,8 @@ func RegisterProxyMetrics(cluster string) {
 	// query ctx metrics
 	QueryCtxQueryCounter = QueryCtxQueryCounter.MustCurryWith(curryingLabelsWithLblCluster)
 	prometheus.MustRegister(QueryCtxQueryCounter)
+	QueryCtxQuerySizeCounter = QueryCtxQuerySizeCounter.MustCurryWith(curryingLabelsWithLblCluster)
+	prometheus.MustRegister(QueryCtxQuerySizeCounter)
 	QueryCtxQueryDeniedCounter = QueryCtxQueryDeniedCounter.MustCurryWith(curryingLabelsWithLblCluster)
 	prometheus.MustRegister(QueryCtxQueryDeniedCounter)
 	QueryCtxQueryDurationHistogram = QueryCtxQueryDurationHistogram.MustCurryWith(curryingLabelsWithLblCluster).(*prometheus.HistogramVec)
