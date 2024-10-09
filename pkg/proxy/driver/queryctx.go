@@ -186,7 +186,7 @@ func (q *QueryCtxImpl) execute(ctx context.Context, sql string, stmtNode ast.Stm
 	startTime := time.Now()
 	ret, err := q.executeStmt(ctx, sql, stmtNode)
 	durationMilliSecond := float64(time.Since(startTime)) / float64(time.Second)
-	q.recordQueryMetrics(ctx, stmtNode, err, durationMilliSecond)
+	q.recordQueryMetrics(ctx, stmtNode, ret, err, durationMilliSecond)
 	return ret, err
 }
 
