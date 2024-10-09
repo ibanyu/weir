@@ -48,6 +48,14 @@ var (
 			Help:      "Counter of queries.",
 		}, []string{LblCluster, LblNamespace, LblDb, LblTable, LblSQLType, LblResult})
 
+	QueryCtxQuerySizeCounter = prometheus.NewCounterVec(
+		prometheus.CounterOpts{
+			Namespace: ModuleWeirProxy,
+			Subsystem: LabelQueryCtx,
+			Name:      "query_size_total",
+			Help:      "Counter of queries size.",
+		}, []string{LblCluster, LblNamespace, LblDb, LblTable, LblSQLType})
+
 	QueryCtxQueryDeniedCounter = prometheus.NewCounterVec(
 		prometheus.CounterOpts{
 			Namespace: ModuleWeirProxy,
